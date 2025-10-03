@@ -23,7 +23,7 @@ heartBtn.addEventListener("click",function(){
 
 
 
-// call-btn er jonn0
+// call-btn er jonno
 
 
  const cardBtns = document.getElementsByClassName("card-btn")
