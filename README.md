@@ -35,15 +35,7 @@
 
 document.createElement(""),In this empty string we can create new element like div and if we want to add new element or feature we can use innerText or InnerHTML;
  const newCard = document.createElement("div");
-       newCard.innerHTML =`<div  class="border-1 border-gray-300 mt-3 p-4 flex justify-between items-baseline shadow-sm">
-                    <div>
-                         <h1 id="history-box" class="text-[15px] font-semibold mt-3">${cardTitle}</h1>
-                     <p>${cardNumber}</p>
-                    </div>
-                    <span class="text-gray-600 text-[15px]">${localTime}</span>    
-                     
-                </div>`;
-                     cardHistory.append(newCard)
+       newCard.innerHTML or new card.innerText
 
 
 
@@ -52,6 +44,8 @@ document.createElement(""),In this empty string we can create new element like d
 #3.What is Event Bubbling and how does it work?
 
 ##answer:
+
+
 If we click the child element -
 ->firstly event handler of a child element are active,then the event find the parent element,then find the parent of parent....this whole process looks like a bubble ,and it's called event bubbling.
 
@@ -61,7 +55,11 @@ If we click the child element -
 
 ##4.What is Event Delegation in JavaScript? Why is it useful?
 
-#answer:In this case ,child element are not individually connected with the event listener,they create only one event listener into their parent element.
+#answer:
+
+
+
+In this case ,child element are not individually connected with the event listener,they create only one event listener into their parent element.
 
 It is useful for handle dynamic Elements.
 
