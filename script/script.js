@@ -1,15 +1,32 @@
 console.log('script file connect')
-// copy-available=id coppy button er 
-// btn-box-copy
-// btn-call-1
-// title-1
+
 
 function getElement(id){
   const element = document.getElementById(id);
   return element;
 }
 
-const cardBtns = document.getElementsByClassName("card-btn")
+
+// #heart-button er kaj
+
+const heartBtns = document.getElementsByClassName("heart-btn")
+ 
+for (let heartBtn of heartBtns ){
+  // console.log(heartBtn)
+heartBtn.addEventListener("click",function(){
+
+  const newHeart =getElement("heart-count").innerText;
+  const finalHeat = Number(newHeart) + 1
+   getElement("heart-count").innerText = finalHeat 
+})
+}
+
+
+
+// call-btn er jonn0
+
+
+ const cardBtns = document.getElementsByClassName("card-btn")
 // console.log(cardBtns)
 
 for (let cardBtn of cardBtns){
@@ -17,79 +34,76 @@ for (let cardBtn of cardBtns){
   cardBtn.addEventListener("click",function(){
     // console.log("btn-clicked");
    
-
-    const cardTitle=cardBtn.parentNode.parentNode.childNodes[3].innerText;
+const cardTitle=cardBtn.parentNode.parentNode.childNodes[3].innerText;
     //  console.log(cardTitle)
-    const cardNumber=cardBtn.parentNode.parentNode.childNodes[7].innerText;
-   
-    
-    //  console.log(cardNumber)
-  // const history = getElement("card-box").innerText
-   const cardHistory= getElement("call-history-1");
-//   
-  alert(`Calling ${cardTitle}: ${cardNumber}`)
-  const newCard = document.createElement("div");
-   newCard.innerHTML =`<div  class="border-1 border-gray-300 mt-3 p-4">
-                    <h1 id="history-box" class="font-semibold mt-3">${cardTitle}</h1>
+ const cardNumber=cardBtn.parentNode.parentNode.childNodes[7].innerText;
+   //  console.log(cardNumber)
+const cardHistory= getElement("call-history-1");
+
+ const newCoin = getElement("coin-nav").innerText;
+    // console.log(newCoin)
+     if(newCoin >= 20){
+         
+       alert(`Calling ${cardTitle}: ${cardNumber}`);
+       const now = new Date();
+       const localTime = now.toLocaleTimeString();
+       console.log(localTime)
+
+       const newCard = document.createElement("div");
+       newCard.innerHTML =`<div  class="border-1 border-gray-300 mt-3 p-4 flex justify-between items-baseline shadow-sm">
+                    <div>
+                         <h1 id="history-box" class="text-[15px] font-semibold mt-3">${cardTitle}</h1>
                      <p>${cardNumber}</p>
-                             
+                    </div>
+                    <span class="text-gray-600 text-[15px]">${localTime}</span>    
+                     
                 </div>`;
                      cardHistory.append(newCard)
 
-    const newCoin = getElement("coin-nav").innerText;
-    // console.log(newCoin)
-     if(newCoin >= 20){
-          getElement("coin-nav").innerText=newCoin-20;
-    }
-    else{
-      alert("You don’t have enough coins. At least 20 coins are required to make a call")
-    }
-
-  })
+      
+                getElement("coin-nav").innerText=newCoin-20;
+    
+              }
+    
+              else{
+              alert("You don’t have enough coins. At least 20 coins are required to make a call")
+      
+             }
+})
 }
 
 
-// document.getElementById('btn-call-1').addEventListener("click",function(){
+// coppy-btn er jonno
 
-//   const title = getElement ("title-1").innerText;
-//   const number = getElement("card-number-1").innerText;
-
-//   //  const history = getElement("card-box").innerText;
-
-//   //  console.log(title,number,history)
+const copyBtns = document.getElementsByClassName("copy-btn")
+ 
+for (let copyBtn of copyBtns ){
+  //  console.log(copyBtn)
+ copyBtn.addEventListener("click", async function(){
+  // console.log()
+   const cardNumber=copyBtn.parentNode.parentNode.childNodes[7].innerText;
+  const newCopy = getElement("copy-available").innerText;
+   
+  try {
+    await navigator.clipboard.writeText(cardNumber)
   
-//  
-              
-              
-//          
+  }
+  catch (err){
 
-//   })
+   }
 
-
-
-// document.getElementById("btn-box-copy").addEventListener("click",function(){
-// // const btnCopy = getElement("btn-box-copy").innerText;
-// // const copy =  getElement("copy-available").innerText;
-
+   const finalCopy = Number(newCopy) + 1
+ 
+   getElement("copy-available").innerText = finalCopy;
+   alert(`Number is Copied: ${cardNumber}`)
+})
+ }
 
 
+// clear-button er jonno
 
-// const newCopy =Number(copy)+1;
+ document.getElementById('clear-btn').addEventListener("click",function(){
 
-// // console.log(newCopy)
-// getElement("copy-available").innerText= newCopy;
-// })
-
-
-// const copyBtn = document.querySelectorAll("#btn-box-copy");
-
-
-// const newCopy = document.getElementById("copy-available");
-
-
-// copyBtn.forEach(button => {
-//   button.addEventListener("click", () => {
-//     let currentCopy = parseInt(newCopy.innerText);
-//     newCopy.innerText = currentCopy + 1;
-//   });
-// });
+     const cardHistory= getElement("call-history-1");
+    cardHistory.innerHTML=""
+})
